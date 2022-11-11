@@ -62,7 +62,15 @@ public class FundamentosApplication implements CommandLineRunner {
 		System.out.println(myBeanWithProperties.function());
 		System.out.println(userPojo.getEmail() +" - " + userPojo.getPassword());
 		System.out.println(userPojo.getAge());
-		LOGGER.error("Esto es un error del aplicativo");
+
+				// Manejo de errores con logger
+		try{
+			//Error
+			int value = 10/0;
+			LOGGER.debug("Mi valor :"+value);
+		}catch (Exception e){
+			LOGGER.error("Esto es un error al dividir por cero "+ e.getMessage());
+		}
 
 	}
 }
