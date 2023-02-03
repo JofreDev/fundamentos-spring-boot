@@ -59,9 +59,9 @@ public class FundamentosApplication implements CommandLineRunner {
 		myBean.print();
 		myBeanWithDependency.printWithDependency();
 		printAreas.printAreasWithDependency();
-		System.out.println(myBeanWithProperties.function());
-		System.out.println(userPojo.getEmail() +" - " + userPojo.getPassword());
-		System.out.println(userPojo.getAge());
+		//System.out.println(myBeanWithProperties.function());
+		//System.out.println(userPojo.getEmail() +" - " + userPojo.getPassword());
+		//System.out.println(userPojo.getAge());
 
 				// Manejo de errores con logger
 		try{
