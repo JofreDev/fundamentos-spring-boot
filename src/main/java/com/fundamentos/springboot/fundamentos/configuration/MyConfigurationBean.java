@@ -7,14 +7,29 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
+// Se configuran los beans
 @Configuration
 public class MyConfigurationBean {
+    // Metodo del tipo de la interfaz
+    // Devuelve la implementación
     @Bean
     public MyBean beanOperations(){
 
         //return MyBeanImplement() -> Implementanto el bean versión 1
         return new MyBean2Implement(); // Implementando el bean versión 2
     }
+
+    // Tambien se puede generar error por el uso de varios beans acá
+    // En teoria esto no deberia pasar
+    // No deria pasar que se creen dos beans de una interfaz no tiene sentido.
+    /*
+    @Bean
+    public MyBean beanOperations2(){
+
+        return new MyBeanImplement();//-> Implementanto el bean versión 1
+        //return new MyBean2Implement(); // Implementando el bean versión 2
+    }
+    */
 
 
     @Bean
@@ -41,14 +56,5 @@ public class MyConfigurationBean {
 
     // Configuración de datasource a nivel de clases !
 
-    @Bean
-    public DataSource dataSource(){
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:mem:testdb");
-        dataSourceBuilder.username("SA");
-        dataSourceBuilder.password("");
 
-        return dataSourceBuilder.build();
-    }
 }

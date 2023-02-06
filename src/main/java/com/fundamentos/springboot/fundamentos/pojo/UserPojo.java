@@ -4,9 +4,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
-@ConstructorBinding
-@ConfigurationProperties(prefix = "user")
-
+@ConstructorBinding // -> Importante para la inyección de dependencia.
+// Se debe configurar la clase como dependencia.
+@ConfigurationProperties(prefix = "user") // -> Representa el pefijo del properties
 public class UserPojo {
 
     private String email;

@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "post")
 public class Post {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Id que representa la entidad a nivel de la tabla en la BD
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Se crea un id unico
     // A nivel de base de datos el atributo de llama "id_post"
     @Column(name="id_post", nullable = false, unique = true)
     private Long id;
