@@ -12,7 +12,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO) // Se auto-incrementa
     @Column(name="id_user", nullable = false, unique = true)
     private Long id;
     @Column(length = 50)
@@ -31,14 +31,13 @@ public class User {
     // Arreglo de Post
     // Notación para acceder al servicio a nivel de servicio rest sin ningun error 'stackOver'
     @JsonManagedReference
-    private List<Post> post = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 
 
-    public User(String name, String email, LocalDate birthDate, List<Post> post) {
+    public User(String name, String email, LocalDate birthDate) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
-        this.post = post;
     }
 
     public Long getId() {
@@ -74,11 +73,11 @@ public class User {
     }
 
     public List<Post> getPost() {
-        return post;
+        return posts;
     }
 
     public void setPost(List<Post> post) {
-        this.post = post;
+        this.posts = post;
     }
 
     @Override
@@ -88,7 +87,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
-                ", post=" + post +
+                ", posts=" + posts +
                 '}';
     }
 }

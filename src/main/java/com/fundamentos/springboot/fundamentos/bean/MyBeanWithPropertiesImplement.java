@@ -12,6 +12,6 @@ public class MyBeanWithPropertiesImplement implements MyBeanWithProperties{
 
     @Override
     public String function() {
-        return nombre + "-" + apellido;
+        return "Nombre : " + nombre + " - " + apellido;
     }
     }

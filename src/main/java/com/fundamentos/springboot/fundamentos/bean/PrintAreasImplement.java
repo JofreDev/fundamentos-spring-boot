@@ -2,7 +2,7 @@ package com.fundamentos.springboot.fundamentos.bean;
 
 public class PrintAreasImplement implements PrintAreas{
 
-    GeometricOperations geometricOperations;
+    private final GeometricOperations geometricOperations;
 
     public PrintAreasImplement(GeometricOperations geometricOperations) {
         this.geometricOperations = geometricOperations;
