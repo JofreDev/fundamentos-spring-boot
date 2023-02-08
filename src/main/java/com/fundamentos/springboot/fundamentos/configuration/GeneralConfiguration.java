@@ -9,10 +9,12 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 
 @Configuration
+@PropertySource("classpath:connection.properties") // -> De esta forma leemos el fichero de propiedades
 @EnableConfigurationProperties(UserPojo.class) // -> Se configura la clase como dependencia
 public class GeneralConfiguration {
     // ${value.name}
@@ -26,6 +28,20 @@ public class GeneralConfiguration {
     @Value("${value.random}")
     private String random;
 
+    /// Leemos del conecction.properties
+
+    @Value("${jdbc.url}")
+    private String jdbcUrl;
+
+    @Value("${driver}")
+    private String driver;
+
+    @Value("${username}")
+    private String username;
+
+    @Value("${password}")
+    private String password;
+
     @Bean
     public MyBeanWithProperties function() {
         return new MyBeanWithPropertiesImplement(name,apellido);
@@ -36,10 +52,10 @@ public class GeneralConfiguration {
     @Bean
     public DataSource dataSource(){
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:mem:testdb");
-        dataSourceBuilder.username("SA");
-        dataSourceBuilder.password("");
+        dataSourceBuilder.driverClassName(driver);
+        dataSourceBuilder.url(jdbcUrl);
+        dataSourceBuilder.username(username);
+        dataSourceBuilder.password(password);
 
         return  dataSourceBuilder.build();
     }

@@ -18,7 +18,7 @@ public class User {
     @Column(length = 50)
     private String name;
 
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String email;
 
     // No tiene anotación ya que es de tipo DATE !!!
@@ -38,6 +38,13 @@ public class User {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
+    }
+    public User() {
+
+    }
+
+    public User(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

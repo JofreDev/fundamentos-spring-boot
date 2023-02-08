@@ -1,5 +1,7 @@
 package com.fundamentos.springboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Post {
     @Column(name = "description", length = 255)
     private String description;
     @ManyToOne
+    @JsonBackReference // Soluciona error de Unsupported Media Type
     private User user;
 
     public Post(String description, User user) {
